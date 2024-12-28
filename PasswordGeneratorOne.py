@@ -26,33 +26,23 @@ nr_letters = int(input("How many letters? \n"))
 nr_symbols = int(input("How many symbols? \n"))
 nr_numbers = int(input("How many numbers? \n"))
 
-#Easy Level 
-password = "" # empty string 
+# Declaration of password as a list 
+password_list = []
 
-# Loop the letters 
-for char in range(1,nr_letters+1):
-    random_char= random.choice(letters)
-    password += random_char
+# iterate letterls list 
+for char in range(0,nr_letters):
+    password_list.append(random.choice(letters))
 
-# Loop the symbols 
-for symbol in range(1, nr_symbols +1):
-    random_symbol = random.choice(symbols)
-    password += random_symbol
+# iterate symbols list 
+for symbol in range(0,nr_symbols):
+    password_list.append(random.choice(symbols))
 
-# Loop the numbers 
-for number in range(1,nr_numbers +1):
-    random_number = random.choice(numbers)
-    password += random_number
+# iterate numbers list 
+for number in range(0,nr_numbers):
+    password_list.append(random.choice(numbers))
 
-print(f"Yuor easy level password is: {password} \n")
 
-# try to randomize the password generated 
-# Hard Level 
+random.shuffle(password_list) # randomize item in my list 
 
-random_password = list(password) # Cast string to list to use shuffle() function of random module 
-
-random.shuffle(random_password) # Randomize content of list 
-
-print("Your hard level password is: ")
-print(''.join(random_password)) # 
+print(password_list) # print in list format 
 
