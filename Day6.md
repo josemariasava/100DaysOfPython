@@ -73,3 +73,98 @@ The addition of 5 and 15 results 20.
 <class 'int'>
 ```
 ---
+### Reborg Challenge
+
+[Reeborg's World](https://reeborg.ca/reeborg.html?lang=en&mode=python&menu=worlds%2Fmenus%2Freeborg_intro_en.json&name=Hurdle%201&url=worlds%2Ftutorial_en%2Fhurdle1.json)
+
+#### Solutiion for the Hurdless loop challenge
+
+```python
+def turn_right():
+    turn_left()
+    turn_left()
+    turn_left()
+   
+def jump():
+    move()
+    turn_left()
+    move()
+    turn_right()
+    move()
+    turn_right()
+    move()
+    turn_left()
+
+# draw a square 
+for step in range(1,7):
+    jump()
+```
+
+---
+
+### Indentation
+[PEP 8 – Style Guide for Python Code | peps.python.org](https://peps.python.org/pep-0008/)
+
+```python
+def add(num1, num2):
+    num3 = num1 + num2
+    return num3
+num4 #This line of code is not inside the function
+```
+
+<aside>
+💡
+
+- The first two print statements are indented by 4 spaces, so they belong to the if block.
+- The third print statement is not indented, so it is outside the if block.
+
+```python
+if 10 > 5:
+    print("This is true!")
+    print("I am tab indentation")
+
+print("I have no indentation")
+```
+
+</aside>
+
+---
+
+### While loop
+
+> With the while loop we can execute a set of statements as long as a condition is true.
+> 
+
+```python
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+```
+
+```python
+# while something_is_true:
+    #Do something
+
+# While loop to take inputs from a user 
+# stop the loop when user input 0 
+
+n = int(input("Enter a number: ")) # ask the user and cast to int the input value 
+
+while (n != 0):
+    n = int(input("Enter zero to quit: "))
+```
+
+### Break statement
+
+> With the break statement we can stop the loop even if the while condition is true:
+> 
+
+```python
+i = 1
+while i < 6:
+  print(i)
+  if i == 3:
+    break
+  i += 1 
+```
