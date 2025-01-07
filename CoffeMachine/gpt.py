@@ -1,4 +1,13 @@
-from machine import resources, MENU, process_coins, process_transaction, drink_cost, profit_money, make_drink, check_resources
+from machine import resources, MENU, dict_of_resources, process_coins, transaction, drink_cost, profit_money, make_drink
+
+def check_resources(drink_name):
+    """Check if there are enough resources for the chosen drink."""
+    for ingredient in dict_of_resources:
+        required_amount = dict_of_resources[ingredient](MENU, drink_name)
+        if resources[ingredient] < required_amount:
+            print(f"Sorry, not enough {ingredient}.")
+            return False
+    return True
 
 def print_report():
     """Print the current resources and profit."""
@@ -9,12 +18,13 @@ def print_report():
 
 def process_order(choice):
     """Process the order by checking resources, handling payment, and making the drink."""
-    if check_resources(choice):  # Check if there are enough resources
-        user_payment = process_coins()
-        if process_transaction(user_payment, choice):
-            make_drink(choice)  # This will update the resources
-    else:
-        print(f"Sorry, not enough resources to make {choice}.")
+    if not check_resources(choice):
+        return
+
+    # Process payment
+    user_payment = process_coins()
+    if transaction(user_payment, drink_cost(MENU, choice)):
+        make_drink(choice)  # Updates the resources in make_drink
 
 def main():
     """Main loop for taking orders and managing the coffee machine."""
